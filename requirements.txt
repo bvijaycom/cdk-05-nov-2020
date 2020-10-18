@@ -5,3 +5,46 @@ aws_cdk.aws_dynamodb
 aws_cdk.aws_events
 aws_cdk.aws_lambda
 aws_cdk.aws_events_targets
+
+ou need to create in CDK
+the region should be in eu-west-1
+
+all the below should be genereate via CDK.
+
+Flow 1
+
+1. script should ask what bucket name to be created ?
+2. which region need to be created this s3 bucket ?
+3. what permission you want to apply in that bucket.?
+4. create folder in that bucket ? ask the folder name and necessary permissions ?
+5. after bucket creation ask the zipped python file to be uploaded (4 files need to be asked to upload)?
+6. Create IAM roles and policies
+IAM permission should allow the following
+S3 bucket handling
+LAMBDA handling
+cloudwatch handling
+dynamodb handling
+7. create lambda function,with python 3.8 and associate the created IAM role and then download the zipped python file and extract and place it to the lambda function.
+8. put an entry in cloudwatch for this newly created lambda function to run every 5 mins on monday to friday.
+9. create dynamodb table (ask all the input and then create)
+
+
+Flow 2
+
+1.Ask folder name in s3 bucket and file name in s3 bucket
+2. create lambda function,with python 3.8 and associate the created IAM role and then download the above mentioned python file place it to the lambda function.
+3. put an entry in cloudwatch for this newly created lambda function to run every 5 mins on monday to friday.
+
+
+Flow 3
+
+1.Ask folder name in s3 bucket and file name in s3 bucket
+2. create lambda function,with python 3.8 and associate the created IAM role and then download the above mentioned python file place it to the lambda function.
+3. put an entry in cloudwatch for this newly created lambda function to run every 5 mins on monday to friday.
+
+
+Flow 4
+
+1.Ask folder name in s3 bucket and file name in s3 bucket
+2. create lambda function,with python 3.8 and associate the created IAM role and then download the above mentioned python file place it to the lambda function.
+3. put an entry in cloudwatch for this newly created lambda function to run every 5 mins on monday to friday.
