@@ -42,7 +42,7 @@ class firstStack(core.Stack):
                                            destination_bucket=bucket,
                                            destination_key_prefix="web/static",
                                            sources=[
-                                               s3upload.Source.asset(ZipFIleName)]
+                                               s3upload.Source.asset(ZipFIleName.value_as_string)]
                                            )
 
         iamRole = aws_iam.Role(self,
