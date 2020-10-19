@@ -18,13 +18,14 @@ class firstStack(core.Stack):
 
         _bucket_name = core.CfnParameter(
             self, "uploadBucketName", type="String")
+        _bucket_folder_name=core.CfnParameter(self, "LambdaName", type="String")
         _lambda_name = core.CfnParameter(self, "LambdaName", type="String")
-        _lambda_Role_name=_lambda_name.value_as_string + 'Role'
-        _lambda_Rule_name=_lambda_name.value_as_string + 'Rule'
         _dynamodb_name = core.CfnParameter(self, "DynamodbName", type="String")
 
-        ZipFIleName = "index.zip"
+        _lambda_Role_name = _lambda_name.value_as_string + 'Role'
+        _lambda_Rule_name = _lambda_name.value_as_string + 'Rule'
 
+        ZipFIleName = core.CfnParameter(self, "uploadZipfileName", type="String")
         # bucket Creation
 
         bucket = s3.Bucket(self,
@@ -39,13 +40,14 @@ class firstStack(core.Stack):
         UpLoad = s3upload.BucketDeployment(self,
                                            "s3bucketCreationAfterUpload",
                                            destination_bucket=bucket,
+                                           destination_key_prefix="web/static",
                                            sources=[
                                                s3upload.Source.asset(ZipFIleName)]
                                            )
 
         iamRole = aws_iam.Role(self,
                                "lambdaUniqueID",
-                               role_name="lamdaFuncPythonc",
+                               role_name=_lambda_Role_name,
                                assumed_by=aws_iam.ServicePrincipal(
                                    "lambda.amazonaws.com")
                                )
