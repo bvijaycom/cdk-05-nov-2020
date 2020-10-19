@@ -42,9 +42,7 @@ Stack Details:
 
 Deploy procedures
     
-    cdk bootstrap ( Deploys the CDK toolkit stack into an AWS environment )
-
-    cdk bootstrap -b [backetname] (To specify the s3 bucket name)
+    cdk bootstrap -b [unique s3backetname] ( Deploys the CDK toolkit stack into an AWS environment )
     cdk list
     cdk synthesize  
 
