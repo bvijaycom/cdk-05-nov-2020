@@ -275,8 +275,8 @@ class FourStack(core.Stack):
 
 
 app = core.App()
-FirstStack(app, "taskOneStack")
-SecondStack(app, "taskOneStack")
-ThreeStack(app, "taskThreeStack")
-FourStack(app, "taskFourStack")
+FirstStack(app, "FirstStack")
+SecondStack(app, "SecondStack")
+ThreeStack(app, "ThirdStack")
+FourStack(app, "FourthStack")
 app.synth()
