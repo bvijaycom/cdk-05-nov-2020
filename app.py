@@ -17,6 +17,9 @@ class firstStack(core.Stack):
         _bucket_name = core.CfnParameter(self, "uploadBucketName", type="String",
                                                description="To pass s3 bucket name")
 
+        _lambda_name = core.CfnParameter(self, "LambdaName", type="String")
+        _dynamodb_name = core.CfnParameter(self, "DynamodbName", type="String")
+
         ZipFIleName = "index.zip"
 
         # bucket Creation
@@ -54,13 +57,12 @@ class firstStack(core.Stack):
 
         lambdaFunction = lambda_.Function(
             self, "Singleton",
-            function_name="lamdaFuncPython",
+            function_name=_lambda_name.value_as_string,
             code=lambda_.InlineCode(handler_code),
             handler="index.main",
             timeout=core.Duration.seconds(300),
             runtime=lambda_.Runtime.PYTHON_3_7,
             role=iamRole
-
         )
 
         # Run Every 5 minutes between 8:00 AM and 5:55 PM weekdays
@@ -84,7 +86,7 @@ class firstStack(core.Stack):
         # create dynamo table
         demo_table = aws_dynamodb.Table(
             self, "demo_table",
-            table_name="lamdafunctiondynamitl",
+            table_name=_dynamodb_name.value_as_string,
             partition_key=aws_dynamodb.Attribute(
                 name="id",
                 type=aws_dynamodb.AttributeType.STRING
@@ -94,3 +96,5 @@ class firstStack(core.Stack):
 app = core.App()
 firstStack(app, "S3dlCreationStack")
 app.synth()
+
+
