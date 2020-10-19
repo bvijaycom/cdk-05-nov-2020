@@ -16,15 +16,11 @@ class FirstStack(core.Stack):
 
         # input variable Section
 
-        _bucket_name = core.CfnParameter(
-            self, "uploadBucketName", type="String")
-        _bucket_folder_name = core.CfnParameter(
-            self, "targetFoldername", type="String")
-        first_lambda_name = core.CfnParameter(
-            self, "LambdaName", type="String")
+        _bucket_name = core.CfnParameter(self, "uploadBucketName", type="String")
+        _bucket_folder_name = core.CfnParameter(self, "targetFoldername", type="String")
+        first_lambda_name = core.CfnParameter(self, "FirstLambdaName", type="String")
         _dynamodb_name = core.CfnParameter(self, "DynamodbName", type="String")
-        ZipFIleNames = core.CfnParameter(
-            self, "uploadFoldername", type="String")
+        ZipFIleNames = core.CfnParameter(self, "uploadFoldername", type="String")
 
         first_lambda_Role_name = first_lambda_name.value_as_string + 'Role'
         first_lambda_Rule_name = first_lambda_name.value_as_string + 'Rule'
@@ -105,8 +101,7 @@ class FirstStack(core.Stack):
 
         # OutPut Section
         core.CfnOutput(self, "bucket_name", value=bucket.bucket_name)
-        core.CfnOutput(self, "FirstLambdaName",
-                       value=lambdaFunction.function_name)
+        core.CfnOutput(self, "_FirstLambdaName", value=lambdaFunction.function_name)
         core.CfnOutput(self, "dynamodbName", value=dynamo_table.table_name)
 
 
@@ -114,8 +109,7 @@ class SecondStack(core.Stack):
     def __init__(self, app: core.App, id: str) -> None:
         super().__init__(app, id)
 
-        second_lambda_name = core.CfnParameter(
-            self, "LambdaName", type="String")
+        second_lambda_name = core.CfnParameter(self, "SecondLambdaName", type="String")
         second_lambda_Role_name = second_lambda_name.value_as_string + 'Role'
         second_lambda_Rule_name = second_lambda_name.value_as_string + 'Rule'
 
@@ -163,7 +157,7 @@ class SecondStack(core.Stack):
 
         rule.add_target(targets.LambdaFunction(lambdaFunction))
 
-        core.CfnOutput(self, "SecondLambdaName", value=lambdaFunction.function_name)
+        core.CfnOutput(self, "_SecondLambdaName", value=lambdaFunction.function_name)
 
 
 class ThreeStack(core.Stack):
@@ -171,7 +165,7 @@ class ThreeStack(core.Stack):
         super().__init__(app, id)
 
         third_lambda_name = core.CfnParameter(
-            self, "LambdaName", type="String")
+            self, "ThirdLambdaName", type="String")
         third_lambda_Role_name = third_lambda_name.value_as_string + 'Role'
         third_lambda_Rule_name = third_lambda_name.value_as_string + 'Rule'
 
@@ -219,14 +213,14 @@ class ThreeStack(core.Stack):
 
         rule.add_target(targets.LambdaFunction(lambdaFunction))
 
-        core.CfnOutput(self, "ThirdLambdaName", value=lambdaFunction.function_name)
+        core.CfnOutput(self, "_ThirdLambdaName", value=lambdaFunction.function_name)
 
 
 class FourStack(core.Stack):
     def __init__(self, app: core.App, id: str) -> None:
         super().__init__(app, id)
 
-        fourth_lambda_name = core.CfnParameter(self, "LambdaName", type="String")
+        fourth_lambda_name = core.CfnParameter(self, "FourthLambdaName", type="String")
         fourth_lambda_Role_name = fourth_lambda_name.value_as_string + 'Role'
         fourth_lambda_Rule_name = fourth_lambda_name.value_as_string + 'Rule'
 
@@ -276,7 +270,7 @@ class FourStack(core.Stack):
 
         rule.add_target(targets.LambdaFunction(lambdaFunction))
 
-        core.CfnOutput(self, "Fourth_Lambda_Name", value=lambdaFunction.function_name)
+        core.CfnOutput(self, "_FourthLambdaName", value=lambdaFunction.function_name)
 
 
 
