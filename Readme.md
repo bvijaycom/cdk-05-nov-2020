@@ -10,7 +10,7 @@ cdk installtion
     
     Install cdk installtion:
         
-        - pip3 install cdk 
+        - pip3 install aws-cdk.cdk 
         - pip3 install awscli
 
 
