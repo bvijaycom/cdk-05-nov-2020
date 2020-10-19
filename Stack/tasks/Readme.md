@@ -19,7 +19,10 @@ Deploy procedures
     
     cdk bootstrap -b [unique s3backetname] 
     cdk list
-    cdk synthesize  
+    cdk synthesize First-Stack
+    cdk synthesize Second-Stack
+    cdk synthesize Third-Stack
+    cdk synthesize Fourth-Stack
 
 First Stack deploy
 
