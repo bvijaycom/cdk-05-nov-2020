@@ -7,7 +7,9 @@ from aws_cdk import (
     aws_events_targets as targets,
     aws_dynamodb,
     aws_iam,
+    os,
 )
+
 
 
 class firstStack(core.Stack):
@@ -25,8 +27,9 @@ class firstStack(core.Stack):
         _lambda_Role_name = _lambda_name.value_as_string + 'Role'
         _lambda_Rule_name = _lambda_name.value_as_string + 'Rule'
 
-        # ZipFIleName = "index.zip"
-        ZipFIleName = core.CfnParameter(self, "uploadZipfileName", type="String")
+        ZipFIleName = "index.zip"
+        ZipFIleNames = core.CfnParameter(self, "uploadZipfileName", type="String")
+
         # bucket Creation
 
         bucket = s3.Bucket(self,
@@ -43,7 +46,7 @@ class firstStack(core.Stack):
                                            destination_bucket=bucket,
                                            destination_key_prefix="web/static",
                                            sources=[
-                                               s3upload.Source.asset(ZipFIleName.value_as_string)]
+                                               s3upload.Source.asset("./lambdafiles")]
                                            )
 
         iamRole = aws_iam.Role(self,
@@ -105,7 +108,7 @@ class firstStack(core.Stack):
         # OutPut Section
         core.CfnOutput(self, "bucket_name", value=bucket.bucket_name)
         core.CfnOutput(self, "Lamda_Name", value=bucket.bucket_name)
-        core.CfnOutput(self, "dynamedbName", value=demo_table.table_name)
+        core.CfnOutput(self, "dynamodbName", value=demo_table.table_name)
 
 
 app = core.App()
