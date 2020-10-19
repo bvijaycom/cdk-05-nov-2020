@@ -10,7 +10,7 @@ from aws_cdk import (
 )
 
 
-class S3bucketStack(core.Stack):
+class firstStack(core.Stack):
     def __init__(self, app: core.App, id: str) -> None:
         super().__init__(app, id)
 
@@ -94,5 +94,5 @@ class S3bucketStack(core.Stack):
 
 
 app = core.App()
-S3bucketStack(app, "s3bucketCreationStack")
+firstStack(app, "S3dlCreationStack")
 app.synth()
