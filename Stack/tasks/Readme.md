@@ -23,8 +23,7 @@ Deploy procedures
 
 First Stack deploy
 
-    cdk deploy First-Stack \
-        --parameters uploadBucketName=jinojoes3bucket \
+    cdk deploy First-Stack --parameters uploadBucketName=jinojoes3bucket \
         --parameters DynamodbName=jinojoeDynamodb \
         --parameters targetFoldername='common' \
         --parameters FirstLambdaName=firstlambda \
@@ -32,15 +31,12 @@ First Stack deploy
 
 Second Stack Deploy
 
-    cdk deploy Second-Stack \
-        --parameters SecondLambdaName=secondlambda 
+    cdk deploy Second-Stack --parameters SecondLambdaName=secondlambda 
 
 Third Stack Deploy
 
-    cdk deploy Third-Stack \
-        --parameters ThirdLambdaName=thirdlambda 
+    cdk deploy Third-Stack --parameters ThirdLambdaName=thirdlambda 
 
 Fourth Stack Deploy
 
-    cdk deploy Fourth-Stack \
-        --parameters FourthLambdaName=fourthlambda 
+    cdk deploy Fourth-Stack --parameters FourthLambdaName=fourthlambda 
