@@ -18,7 +18,7 @@ class firstStack(core.Stack):
 
         _bucket_name = core.CfnParameter(
             self, "uploadBucketName", type="String")
-        _bucket_folder_name=core.CfnParameter(self, "LambdaName", type="String")
+        # _bucket_folder_name=core.CfnParameter(self, "foldername", type="String")
         _lambda_name = core.CfnParameter(self, "LambdaName", type="String")
         _dynamodb_name = core.CfnParameter(self, "DynamodbName", type="String")
 
