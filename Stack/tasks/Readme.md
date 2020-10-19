@@ -21,20 +21,26 @@ Deploy procedures
     cdk list
     cdk synthesize  
 
-parameter passing methods
+First Stack deploy
 
-cdk deploy First-Stack   \
---parameters uploadBucketName=jinojoes3bucket \
---parameters DynamodbName=jinojoeDynamodb \
---parameters targetFoldername='common' \
---parameters FirstLambdaName=firstlambda \
---parameters uploadZipfileName='files' \
+    cdk deploy First-Stack \
+        --parameters uploadBucketName=jinojoes3bucket \
+        --parameters DynamodbName=jinojoeDynamodb \
+        --parameters targetFoldername='common' \
+        --parameters FirstLambdaName=firstlambda \
+        --parameters uploadZipfileName='files' 
 
-cdk deploy Second-Stack \
---parameters SecondLambdaName=secondlambda 
+Second Stack Deploy
 
-cdk deploy Third-Stack \
---parameters ThirdLambdaName=thirdlambda 
+    cdk deploy Second-Stack \
+        --parameters SecondLambdaName=secondlambda 
 
-cdk deploy Fourth-Stack \
---parameters FourthLambdaName=fourthlambda 
+Third Stack Deploy
+
+    cdk deploy Third-Stack \
+        --parameters ThirdLambdaName=thirdlambda 
+
+Fourth Stack Deploy
+
+    cdk deploy Fourth-Stack \
+        --parameters FourthLambdaName=fourthlambda 
