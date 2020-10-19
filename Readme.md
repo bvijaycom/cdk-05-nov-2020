@@ -50,6 +50,7 @@ Deploy procedures
 
         cdk bootstrap -b vijaycdktestenv (To specify the s3 bucket name)
 
+    - cdk list
     - cdk synthesize  [stack alias name] ( to show script in the form cloudformatio format) (test)
 
     - cdk synthesize s3bucketCreationStack

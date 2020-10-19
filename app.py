@@ -14,15 +14,17 @@ class firstStack(core.Stack):
     def __init__(self, app: core.App, id: str) -> None:
         super().__init__(app, id)
 
-        _bucket_name = core.CfnParameter(self, "uploadBucketName", type="String",
-                                               description="To pass s3 bucket name")
+        # input variable Section
 
+        _bucket_name = core.CfnParameter(
+            self, "uploadBucketName", type="String")
         _lambda_name = core.CfnParameter(self, "LambdaName", type="String")
         _dynamodb_name = core.CfnParameter(self, "DynamodbName", type="String")
 
         ZipFIleName = "index.zip"
 
         # bucket Creation
+
         bucket = s3.Bucket(self,
                            "s3bucketCreation",
                            bucket_name=_bucket_name.value_as_string,
@@ -31,6 +33,7 @@ class firstStack(core.Stack):
                            )
 
         # fileUpload after bucket creation
+
         UpLoad = s3upload.BucketDeployment(self,
                                            "s3bucketCreationAfterUpload",
                                            destination_bucket=bucket,
@@ -38,8 +41,12 @@ class firstStack(core.Stack):
                                                s3upload.Source.asset(ZipFIleName)]
                                            )
 
-        iamRole = aws_iam.Role(self, "lambdaUniqueID", role_name="lamdaFuncPythonc", assumed_by=aws_iam.ServicePrincipal(
-            "lambda.amazonaws.com"))
+        iamRole = aws_iam.Role(self,
+                               "lambdaUniqueID",
+                               role_name="lamdaFuncPythonc",
+                               assumed_by=aws_iam.ServicePrincipal(
+                                   "lambda.amazonaws.com")
+                               )
 
         iamRole.add_to_policy(aws_iam.PolicyStatement(
             effect=aws_iam.Effect.ALLOW,
@@ -79,8 +86,6 @@ class firstStack(core.Stack):
         )
         rule.add_target(targets.LambdaFunction(lambdaFunction))
 
-
-
         # create dynamo table
         demo_table = aws_dynamodb.Table(
             self, "demo_table",
@@ -93,8 +98,8 @@ class firstStack(core.Stack):
 
         # OutPut Section
         core.CfnOutput(self, "bucket_name", value=bucket.bucket_name)
-        core.CfnOutput(self, "lamda_name", value=demo_table.table_name)
-
+        core.CfnOutput(self, "Lamda_Name", value=bucket.bucket_name)
+        core.CfnOutput(self, "dynamedbName", value=demo_table.table_name)
 
 
 app = core.App()
