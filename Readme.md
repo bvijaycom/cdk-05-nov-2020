@@ -24,18 +24,18 @@ configure aws credentials:
 
 Stack Details:
 
-    - S3bucketStack
+    S3bucketStack
 
         1. Create S3 bucket
         2. Upload the file into s3 bucket
 
-    - LambdaCronStack
+    LambdaCronStack
 
         1. create iam role ( dynamdb:*, s3bucket:*, cloudwatch:*, lambda:* )
         2. Lambdafunction Create
         3. Create event trigger function in cloudwatch
 
-    - DynamoDbStack
+    DynamoDbStack
 
         1. Create dynamodb
 
