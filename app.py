@@ -35,14 +35,6 @@ class S3bucketStack(core.Stack):
                                                s3upload.Source.asset(ZipFIleName)]
                                            )
 
-        # OutPut Section
-        core.CfnOutput(self, "bucket_name", value=bucket.bucket_name)
-
-
-class LambdaCronStack(core.Stack):
-    def __init__(self, app: core.App, id: str) -> None:
-        super().__init__(app, id)
-
         iamRole = aws_iam.Role(self, "lambdaUniqueID", role_name="lamdaFuncPythonc", assumed_by=aws_iam.ServicePrincipal(
             "lambda.amazonaws.com"))
 
@@ -86,9 +78,8 @@ class LambdaCronStack(core.Stack):
         rule.add_target(targets.LambdaFunction(lambdaFunction))
 
 
-class DynamoDbStack(core.Stack):
-    def __init__(self, app: core.App, id: str) -> None:
-        super().__init__(app, id)
+        # OutPut Section
+        core.CfnOutput(self, "bucket_name", value=bucket.bucket_name)
 
         # create dynamo table
         demo_table = aws_dynamodb.Table(
@@ -101,32 +92,7 @@ class DynamoDbStack(core.Stack):
         )
 
 
-# class IamRoleStack(core.Stack):
-#     def __init__(self, app: core.App, id: str) -> None:
-#         super().__init__(app, id)
 
-#         iamRole = aws_iam.Role(self, "tamroleID", role_name="temprolelambda", assumed_by=aws_iam.ServicePrincipal(
-#             "lambda.amazonaws.com"))
-
-#         policyName = iamRole.add_to_policy(aws_iam.PolicyStatement(
-#             effect=aws_iam.Effect.ALLOW,
-
-#             actions=["logs:CreateLogGroup",
-#                      "logs:CreateLogStream",
-#                      "logs:PutLogEvents",
-#                      "cloudwatch:*",
-#                      "dynamodb:*",
-#                      "s3:*",
-#                      "lambda:*"],
-#             resources=["*"]
-#         ))
-#         core.CfnOutput(self, "Rolename", value=iamRole.role_name)
-
-
-# iamRole.add_managed_policy(ManagedPolicy.fromAwsManagedPolicyName('AmazonS3FullAccess'))
 app = core.App()
 S3bucketStack(app, "s3bucketCreationStack")
-LambdaCronStack(app, "LambdaCron")
-DynamoDbStack(app, "dynamodbCreationStack")
-# IamRoleStack(app, "IamRoleCreationStack")
 app.synth()
