@@ -26,3 +26,5 @@ configure aws credentials:
 Reference: 
 
 - https://docs.aws.amazon.com/cdk/api/latest/python/aws_cdk.aws_lambda/Function.html
+- https://pypi.org/project/aws-cdk.aws-s3-deployment/
+- https://docs.aws.amazon.com/cdk/api/latest/python/index.html
