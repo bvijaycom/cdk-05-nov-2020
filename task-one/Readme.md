@@ -1,23 +1,23 @@
 Stack Details:
     
-    S3bucketRule
+    S3bucket
 
         1. Create S3 bucket
         2. Upload the file into s3 bucket
 
-    LambdaCronRule
+    LambdaCron
 
         1. create iam role ( dynamdb:*, s3bucket:*, cloudwatch:*, lambda:* )
         2. Lambdafunction Create
         3. Create event trigger function in cloudwatch
 
-    DynamoDbRule
+    DynamoDb
 
         1. Create dynamodb
 
 Deploy procedures
     
-    cdk bootstrap -b [unique s3backetname] ( Deploys the CDK toolkit stack into an AWS environment )
+    cdk bootstrap -b [unique s3backetname] 
     cdk list
     cdk synthesize  
 
