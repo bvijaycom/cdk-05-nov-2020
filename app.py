@@ -7,7 +7,6 @@ from aws_cdk import (
     aws_events_targets as targets,
     aws_dynamodb,
     aws_iam,
-    os,
 )
 
 
