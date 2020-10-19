@@ -64,7 +64,7 @@ class FirstStack(core.Stack):
             resources=["*"]
         ))
 
-        with open("files/lambda-handler.py", encoding="utf8") as fp:
+        with open("../files/lambda-handler1.py", encoding="utf8") as fp:
             handler_code = fp.read()
 
         lambdaFunction = lambda_.Function(
@@ -93,7 +93,7 @@ class FirstStack(core.Stack):
         rule.add_target(targets.LambdaFunction(lambdaFunction))
 
         # create dynamo table
-        demo_table = aws_dynamodb.Table(
+        dynamo_table = aws_dynamodb.Table(
             self, "six",
             table_name=_dynamodb_name.value_as_string,
             partition_key=aws_dynamodb.Attribute(
@@ -104,8 +104,8 @@ class FirstStack(core.Stack):
 
         # OutPut Section
         core.CfnOutput(self, "bucket_name", value=bucket.bucket_name)
-        core.CfnOutput(self, "Lambda_Name", value=bucket.bucket_name)
-        core.CfnOutput(self, "dynamodbName", value=demo_table.table_name)
+        core.CfnOutput(self, "Lambda_Name", value=lambdaFunction.function_name)
+        core.CfnOutput(self, "dynamodbName", value=dynamo_table.table_name)
 
 
 app = core.App()

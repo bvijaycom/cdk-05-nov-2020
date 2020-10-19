@@ -15,35 +15,10 @@ class SecondStack(core.Stack):
     def __init__(self, app: core.App, id: str) -> None:
         super().__init__(app, id)
 
-        # input variable Section
-
-        _bucket_name = core.CfnParameter(self, "uploadBucketName", type="String")
-        _bucket_folder_name=core.CfnParameter(self, "targetFoldername", type="String")
         _lambda_name = core.CfnParameter(self, "LambdaName", type="String")
-        ZipFIleNames = core.CfnParameter(self, "uploadFoldername", type="String")
-
         _lambda_Role_name = _lambda_name.value_as_string + 'Role'
         _lambda_Rule_name = _lambda_name.value_as_string + 'Rule'
 
-
-        # bucket Creation
-
-        bucket = s3.Bucket(self,
-                           "s3bucketCreation",
-                           bucket_name=_bucket_name.value_as_string,
-                           public_read_access=False,
-                           versioned=True
-                           )
-
-        # fileUpload after bucket creation
-
-        UpLoad = s3upload.BucketDeployment(self,
-                                           "s3bucketCreationAfterUpload",
-                                           destination_bucket=bucket,
-                                           destination_key_prefix=_bucket_folder_name.value_as_string,
-                                           sources=[
-                                               s3upload.Source.asset(ZipFIleNames.value_as_string)]
-                                           )
 
         iamRole = aws_iam.Role(self,
                                "lambdaUniqueID",
@@ -63,7 +38,7 @@ class SecondStack(core.Stack):
             resources=["*"]
         ))
 
-        with open("files/lambda-handler.py", encoding="utf8") as fp:
+        with open("../files/lambda-handler2.py", encoding="utf8") as fp:
             handler_code = fp.read()
 
         lambdaFunction = lambda_.Function(
@@ -90,11 +65,6 @@ class SecondStack(core.Stack):
         )
 
         rule.add_target(targets.LambdaFunction(lambdaFunction))
-
-
-        # OutPut Section
-        core.CfnOutput(self, "bucket_name", value=bucket.bucket_name)
-        core.CfnOutput(self, "Lambda_Name", value=bucket.bucket_name)
 
 
 app = core.App()
