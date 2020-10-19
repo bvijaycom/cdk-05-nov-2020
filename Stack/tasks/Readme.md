@@ -28,7 +28,7 @@ parameter passing methods
         --parameters DynamodbName=jinojoeDynamodb \
         --parameters uploadZipfileName='../files' \
         --parameters targetFoldername='common' \
-        --parameters FirstLambdaName=jinojoelambda \
-        --parameters SecondLambdaName=jinojoelambda \
-        --parameters ThirdLambdaName=jinojoelambda \
-        --parameters FourthLambdaName=jinojoelambda 
+        --parameters FirstLambdaName=firstlambda \
+        --parameters SecondLambdaName=secondlambda \
+        --parameters ThirdLambdaName=thirdlambda \
+        --parameters FourthLambdaName=fourthlambda 
