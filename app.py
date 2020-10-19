@@ -17,17 +17,15 @@ class firstStack(core.Stack):
 
         # input variable Section
 
-        _bucket_name = core.CfnParameter(
-            self, "uploadBucketName", type="String")
+        _bucket_name = core.CfnParameter(self, "uploadBucketName", type="String")
         _bucket_folder_name=core.CfnParameter(self, "targetFoldername", type="String")
         _lambda_name = core.CfnParameter(self, "LambdaName", type="String")
         _dynamodb_name = core.CfnParameter(self, "DynamodbName", type="String")
+        ZipFIleNames = core.CfnParameter(self, "uploadFoldername", type="String")
 
         _lambda_Role_name = _lambda_name.value_as_string + 'Role'
         _lambda_Rule_name = _lambda_name.value_as_string + 'Rule'
 
-        ZipFIleName = "index.zip"
-        ZipFIleNames = core.CfnParameter(self, "uploadFoldername", type="String")
 
         # bucket Creation
 
