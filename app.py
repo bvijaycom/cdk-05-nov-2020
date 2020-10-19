@@ -19,6 +19,8 @@ class firstStack(core.Stack):
         _bucket_name = core.CfnParameter(
             self, "uploadBucketName", type="String")
         _lambda_name = core.CfnParameter(self, "LambdaName", type="String")
+        _lambda_Role_name=_lambda_name.value_as_string + 'Role'
+        _lambda_Rule_name=_lambda_name.value_as_string + 'Rule'
         _dynamodb_name = core.CfnParameter(self, "DynamodbName", type="String")
 
         ZipFIleName = "index.zip"
@@ -76,14 +78,15 @@ class firstStack(core.Stack):
         # See https://docs.aws.amazon.com/lambda/latest/dg/tutorial-scheduled-events-schedule-expressions.html
         rule = events.Rule(
             self, "Rule",
-            rule_name="lamdaFuncPythonRule",
+            rule_name=_lambda_Rule_name,
             schedule=events.Schedule.cron(
                 minute='0/5',
-                hour='5-17',
+                hour='*',
                 month='*',
-                week_day='SUN-FRI',
+                week_day='MON-FRI',
                 year='*'),
         )
+
         rule.add_target(targets.LambdaFunction(lambdaFunction))
 
         # create dynamo table
