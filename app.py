@@ -91,8 +91,6 @@ class firstStack(core.Stack):
             )
         )
 
-
-
 app = core.App()
 firstStack(app, "S3dlCreationStack")
 app.synth()
