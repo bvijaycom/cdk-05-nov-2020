@@ -41,19 +41,19 @@ Stack Details:
 
 Deploy procedures
     
-    - cdk bootstrap ( Deploys the CDK toolkit stack into an AWS environment )
+    cdk bootstrap ( Deploys the CDK toolkit stack into an AWS environment )
 
-        cdk bootstrap -b vijaycdktestenv (To specify the s3 bucket name)
+    cdk bootstrap -b [backetname] (To specify the s3 bucket name)
 
-    - cdk list
-    - cdk synthesize  
+    cdk list
+    cdk synthesize  
 
 parameter passing methods
 
     cdk deploy  \
-    --parameters uploadBucketName=jinojoes3bucket \
-    --parameters LambdaName=jinojoelambda \
-    --parameters DynamodbName=jinojoeDynamodb
+        --parameters uploadBucketName=jinojoes3bucket \
+        --parameters LambdaName=jinojoelambda \
+        --parameters DynamodbName=jinojoeDynamodb
 
 Reference: 
 
