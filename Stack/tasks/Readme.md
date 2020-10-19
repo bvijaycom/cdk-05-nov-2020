@@ -43,3 +43,11 @@ Third Stack Deploy
 Fourth Stack Deploy
 
     cdk deploy Fourth-Stack --parameters FourthLambdaName=fourthlambda 
+
+
+
+
+
+Destroy stacks
+
+    cdk destroy First-Stack Fourth-Stack Second-Stack Third-Stack
