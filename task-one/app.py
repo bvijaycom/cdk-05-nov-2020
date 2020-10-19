@@ -11,7 +11,7 @@ from aws_cdk import (
 
 
 
-class firstStack(core.Stack):
+class FirstStack(core.Stack):
     def __init__(self, app: core.App, id: str) -> None:
         super().__init__(app, id)
 
@@ -30,7 +30,7 @@ class firstStack(core.Stack):
         # bucket Creation
 
         bucket = s3.Bucket(self,
-                           "s3bucketCreation",
+                           "one",
                            bucket_name=_bucket_name.value_as_string,
                            public_read_access=False,
                            versioned=True
@@ -39,7 +39,7 @@ class firstStack(core.Stack):
         # fileUpload after bucket creation
 
         UpLoad = s3upload.BucketDeployment(self,
-                                           "s3bucketCreationAfterUpload",
+                                           "two",
                                            destination_bucket=bucket,
                                            destination_key_prefix=_bucket_folder_name.value_as_string,
                                            sources=[
@@ -47,7 +47,7 @@ class firstStack(core.Stack):
                                            )
 
         iamRole = aws_iam.Role(self,
-                               "lambdaUniqueID",
+                               "three",
                                role_name=_lambda_Role_name,
                                assumed_by=aws_iam.ServicePrincipal(
                                    "lambda.amazonaws.com")
@@ -68,7 +68,7 @@ class firstStack(core.Stack):
             handler_code = fp.read()
 
         lambdaFunction = lambda_.Function(
-            self, "Singleton",
+            self, "four",
             function_name=_lambda_name.value_as_string,
             code=lambda_.InlineCode(handler_code),
             handler="index.main",
@@ -80,7 +80,7 @@ class firstStack(core.Stack):
         # Run Every 5 minutes between 8:00 AM and 5:55 PM weekdays
         # See https://docs.aws.amazon.com/lambda/latest/dg/tutorial-scheduled-events-schedule-expressions.html
         rule = events.Rule(
-            self, "Rule",
+            self, "five",
             rule_name=_lambda_Rule_name,
             schedule=events.Schedule.cron(
                 minute='0/5',
@@ -94,7 +94,7 @@ class firstStack(core.Stack):
 
         # create dynamo table
         demo_table = aws_dynamodb.Table(
-            self, "demo_table",
+            self, "six",
             table_name=_dynamodb_name.value_as_string,
             partition_key=aws_dynamodb.Attribute(
                 name="id",
@@ -109,5 +109,5 @@ class firstStack(core.Stack):
 
 
 app = core.App()
-firstStack(app, "task-one")
+FirstStack(app, "taskOneStack")
 app.synth()
