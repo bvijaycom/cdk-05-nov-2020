@@ -19,7 +19,7 @@ class firstStack(core.Stack):
 
         _bucket_name = core.CfnParameter(
             self, "uploadBucketName", type="String")
-        # _bucket_folder_name=core.CfnParameter(self, "foldername", type="String")
+        _bucket_folder_name=core.CfnParameter(self, "targetFoldername", type="String")
         _lambda_name = core.CfnParameter(self, "LambdaName", type="String")
         _dynamodb_name = core.CfnParameter(self, "DynamodbName", type="String")
 
@@ -43,7 +43,7 @@ class firstStack(core.Stack):
         UpLoad = s3upload.BucketDeployment(self,
                                            "s3bucketCreationAfterUpload",
                                            destination_bucket=bucket,
-                                           destination_key_prefix="web/static",
+                                           destination_key_prefix=_bucket_folder_name.value_as_string,
                                            sources=[
                                                s3upload.Source.asset("./lambdafiles")]
                                            )
