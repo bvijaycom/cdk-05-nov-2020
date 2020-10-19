@@ -45,7 +45,7 @@ class firstStack(core.Stack):
                                            destination_bucket=bucket,
                                            destination_key_prefix=_bucket_folder_name.value_as_string,
                                            sources=[
-                                               s3upload.Source.asset("./lambdafiles")]
+                                               s3upload.Source.asset(ZipFIleNames.value_as_string)]
                                            )
 
         iamRole = aws_iam.Role(self,
