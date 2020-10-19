@@ -25,8 +25,8 @@ class firstStack(core.Stack):
         _lambda_Role_name = _lambda_name.value_as_string + 'Role'
         _lambda_Rule_name = _lambda_name.value_as_string + 'Rule'
 
-        ZipFIleName = "index.zip"
-        # ZipFIleName = core.CfnParameter(self, "uploadZipfileName", type="String")
+        # ZipFIleName = "index.zip"
+        ZipFIleName = core.CfnParameter(self, "uploadZipfileName", type="String")
         # bucket Creation
 
         bucket = s3.Bucket(self,
