@@ -4,45 +4,40 @@ cdk installtion
 
         - ubuntu machine ( x64 )
 
-    Packages:
+Packages:
         
-        - sudo apt update && sudo apt install python3 python3-pip -y
+    sudo apt update
+    sudo apt install python3 python3-pip -y
     
-    Install cdk installtion:
+Install cdk installtion:
         
-        - pip3 install aws-cdk.cdk 
-        - pip3 install awscli
-
-
+    pip3 install aws-cdk.cdk 
+    pip3 install awscli
 
 verify cdk installtion:
 
-        - cdk --version
+    cdk --version
 
 configure aws credentials:
 
-        - aws configure
+    aws configure
 
-    Stack Name:
+Stack Details:
 
-        - S3bucketStack
+    - S3bucketStack
 
-           1. Create S3 bucket
-           2. Upload the file into s3 bucket
+        1. Create S3 bucket
+        2. Upload the file into s3 bucket
 
-        - LambdaCronStack
+    - LambdaCronStack
 
-            1. create iam role ( dynamdb:*, s3bucket:*, cloudwatch:*, lambda:* )
-            2. Lambdafunction Create
-            3. Create event trigger function in cloudwatch
+        1. create iam role ( dynamdb:*, s3bucket:*, cloudwatch:*, lambda:* )
+        2. Lambdafunction Create
+        3. Create event trigger function in cloudwatch
 
-        - DynamoDbStack
+    - DynamoDbStack
 
-            1. Create dynamodb
-
-        <!-- - IamRoleStack
-
-            1. Create iam role -->
+        1. Create dynamodb
 
 Deploy procedures
     
@@ -51,11 +46,7 @@ Deploy procedures
         cdk bootstrap -b vijaycdktestenv (To specify the s3 bucket name)
 
     - cdk list
-    - cdk synthesize  [stack alias name] ( to show script in the form cloudformatio format) (test)
-
-    - cdk synthesize s3bucketCreationStack
-    - cdk synthesize LambdaCron
-    - cdk synthesize dynamodbCreationStack
+    - cdk synthesize  
 
 parameter passing methods
 
