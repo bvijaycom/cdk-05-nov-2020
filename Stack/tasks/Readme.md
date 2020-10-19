@@ -23,12 +23,18 @@ Deploy procedures
 
 parameter passing methods
 
-    cdk deploy FirstStack SecondStack ThirdStack FourthStack \
-        --parameters uploadBucketName=jinojoes3bucket \
-        --parameters DynamodbName=jinojoeDynamodb \
-        --parameters uploadZipfileName='../files' \
-        --parameters targetFoldername='common' \
-        --parameters FirstLambdaName=firstlambda \
-        --parameters SecondLambdaName=secondlambda \
-        --parameters ThirdLambdaName=thirdlambda \
-        --parameters FourthLambdaName=fourthlambda 
+cdk deploy First-Stack   \
+--parameters uploadBucketName=jinojoes3bucket \
+--parameters DynamodbName=jinojoeDynamodb \
+--parameters targetFoldername='common' \
+--parameters FirstLambdaName=firstlambda \
+--parameters uploadZipfileName='files' \
+
+cdk deploy Second-Stack \
+--parameters SecondLambdaName=secondlambda 
+
+cdk deploy Third-Stack \
+--parameters ThirdLambdaName=thirdlambda 
+
+cdk deploy Fourth-Stack \
+--parameters FourthLambdaName=fourthlambda 
