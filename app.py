@@ -80,8 +80,6 @@ class firstStack(core.Stack):
         rule.add_target(targets.LambdaFunction(lambdaFunction))
 
 
-        # OutPut Section
-        core.CfnOutput(self, "bucket_name", value=bucket.bucket_name)
 
         # create dynamo table
         demo_table = aws_dynamodb.Table(
@@ -93,8 +91,12 @@ class firstStack(core.Stack):
             )
         )
 
+        # OutPut Section
+        core.CfnOutput(self, "bucket_name", value=bucket.bucket_name)
+        core.CfnOutput(self, "lamda_name", value=demo_table.table_name)
+
+
+
 app = core.App()
 firstStack(app, "S3dlCreationStack")
 app.synth()
-
-

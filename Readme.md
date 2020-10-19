@@ -58,9 +58,10 @@ Deploy procedures
 
 parameter passing methods
 
-    - cdk deploy [stack name] [stack name] [stack name] --parameters parametername=value
-
-        Example: cdk deploy s3bucketCreationStack LambdaCron  dynamodbCreationStack --parameters uploadBucketName=vijays3bucketiotsss
+    cdk deploy  \
+    --parameters uploadBucketName=jinojoes3bucket \
+    --parameters LambdaName=jinojoelambda \
+    --parameters DynamodbName=jinojoeDynamodb
 
 Reference: 
 
