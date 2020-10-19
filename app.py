@@ -49,7 +49,7 @@ class firstStack(core.Stack):
             resources=["*"]
         ))
 
-        with open("lambda-handler.py", encoding="utf8") as fp:
+        with open("lambdafiles/lambda-handler.py", encoding="utf8") as fp:
             handler_code = fp.read()
 
         lambdaFunction = lambda_.Function(
