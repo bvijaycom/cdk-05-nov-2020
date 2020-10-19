@@ -20,6 +20,7 @@ class firstStack(core.Stack):
         _bucket_name = core.CfnParameter(self, "uploadBucketName", type="String")
         _bucket_folder_name=core.CfnParameter(self, "targetFoldername", type="String")
         _lambda_name = core.CfnParameter(self, "LambdaName", type="String")
+        _dynamodb_name = core.CfnParameter(self, "DynamodbName", type="String")
         ZipFIleNames = core.CfnParameter(self, "uploadFoldername", type="String")
 
         _lambda_Role_name = _lambda_name.value_as_string + 'Role'
@@ -91,13 +92,22 @@ class firstStack(core.Stack):
 
         rule.add_target(targets.LambdaFunction(lambdaFunction))
 
-
+        # create dynamo table
+        demo_table = aws_dynamodb.Table(
+            self, "demo_table",
+            table_name=_dynamodb_name.value_as_string,
+            partition_key=aws_dynamodb.Attribute(
+                name="id",
+                type=aws_dynamodb.AttributeType.STRING
+            )
+        )
 
         # OutPut Section
         core.CfnOutput(self, "bucket_name", value=bucket.bucket_name)
         core.CfnOutput(self, "Lamda_Name", value=bucket.bucket_name)
+        core.CfnOutput(self, "dynamodbName", value=demo_table.table_name)
 
 
 app = core.App()
-firstStack(app, "task-two")
+firstStack(app, "S3dlCreationStack")
 app.synth()
