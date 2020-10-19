@@ -1,11 +1,8 @@
 from aws_cdk import (
-    aws_s3 as s3,
-    aws_s3_deployment as s3upload,
     core,
     aws_events as events,
     aws_lambda as lambda_,
     aws_events_targets as targets,
-    aws_dynamodb,
     aws_iam,
 )
 

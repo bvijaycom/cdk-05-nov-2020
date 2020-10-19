@@ -1,14 +1,10 @@
 from aws_cdk import (
-    aws_s3 as s3,
-    aws_s3_deployment as s3upload,
     core,
     aws_events as events,
     aws_lambda as lambda_,
     aws_events_targets as targets,
-    aws_dynamodb,
     aws_iam,
 )
-
 
 
 class ThreeStack(core.Stack):
@@ -38,7 +34,7 @@ class ThreeStack(core.Stack):
             resources=["*"]
         ))
 
-        with open("../files/lambda-handler2.py", encoding="utf8") as fp:
+        with open("../files/lambda-handler3.py", encoding="utf8") as fp:
             handler_code = fp.read()
 
         lambdaFunction = lambda_.Function(
@@ -51,9 +47,7 @@ class ThreeStack(core.Stack):
             role=iamRole
         )
 
-        # Run Every 5 minutes between 8:00 AM and 5:55 PM weekdays
-        # See https://docs.aws.amazon.com/lambda/latest/dg/tutorial-scheduled-events-schedule-expressions.html
-        rule = events.Rule(
+       rule = events.Rule(
             self, "Rule",
             rule_name=_lambda_Rule_name,
             schedule=events.Schedule.cron(
