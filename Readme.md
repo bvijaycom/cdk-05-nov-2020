@@ -51,7 +51,9 @@ parameter passing methods
     cdk deploy  \
         --parameters uploadBucketName=jinojoes3bucket \
         --parameters LambdaName=jinojoelambda \
-        --parameters DynamodbName=jinojoeDynamodb
+        --parameters DynamodbName=jinojoeDynamodb \
+        --parameters uploadZipfileName=./lambdafiles \
+        --parameters targetFoldername='web/static'
 
 Reference: 
 
