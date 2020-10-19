@@ -24,18 +24,19 @@ configure aws credentials:
 
 Stack Details:
 
-    S3bucketStack
+    
+    S3bucketRule
 
         1. Create S3 bucket
         2. Upload the file into s3 bucket
 
-    LambdaCronStack
+    LambdaCronRule
 
         1. create iam role ( dynamdb:*, s3bucket:*, cloudwatch:*, lambda:* )
         2. Lambdafunction Create
         3. Create event trigger function in cloudwatch
 
-    DynamoDbStack
+    DynamoDbRule
 
         1. Create dynamodb
 
@@ -44,7 +45,6 @@ Deploy procedures
     cdk bootstrap ( Deploys the CDK toolkit stack into an AWS environment )
 
     cdk bootstrap -b [backetname] (To specify the s3 bucket name)
-
     cdk list
     cdk synthesize  
 
