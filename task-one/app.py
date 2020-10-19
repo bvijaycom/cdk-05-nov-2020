@@ -104,7 +104,7 @@ class FirstStack(core.Stack):
 
         # OutPut Section
         core.CfnOutput(self, "bucket_name", value=bucket.bucket_name)
-        core.CfnOutput(self, "Lamda_Name", value=bucket.bucket_name)
+        core.CfnOutput(self, "Lambda_Name", value=bucket.bucket_name)
         core.CfnOutput(self, "dynamodbName", value=demo_table.table_name)
 
 
