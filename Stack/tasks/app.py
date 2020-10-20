@@ -17,7 +17,6 @@ class FirstStack(core.Stack):
         # input variable Section
 
         _bucket_name = core.CfnParameter(self, "uploadBucketName", type="String")
-        _bucket_folder_name = core.CfnParameter(self, "targetFoldername", type="String")
         first_lambda_name = core.CfnParameter(self, "FirstLambdaName", type="String")
         _dynamodb_name = core.CfnParameter(self, "DynamodbName", type="String")
 
@@ -38,7 +37,6 @@ class FirstStack(core.Stack):
         UpLoad = s3upload.BucketDeployment(self,
                                            "onetwo",
                                            destination_bucket=bucket,
-                                           destination_key_prefix=_bucket_folder_name.value_as_string,
                                            sources=[
                                                s3upload.Source.asset('./files')]
                                            )
