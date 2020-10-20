@@ -3,9 +3,9 @@ Stack Details:
 
 | S3bucket | LambdaCron | DynamoDb |
 | --------------- | --------------- | --------------- |
-| 1. Create S3 bucket| create iam role | Create dynamodb |
-| 2. Upload the file into s3 bucket |Lambdafunction Create |  |
-|  | Create event trigger function in cloudwatch |  |
+| 1. Create S3 bucket| 1. create iam role | Create dynamodb |
+| 2. Upload the file into s3 bucket | 2. Lambdafunction Create |  |
+|  | 3. Create event trigger function in cloudwatch |  |
     
 
 Deploy procedures
