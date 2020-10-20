@@ -1,4 +1,4 @@
-cdk
+cloud development kit
 
 | Operating System |
 | --------------- |
