@@ -59,7 +59,7 @@ class FirstStack(core.Stack):
             resources=["*"]
         ))
 
-        with open("files/lambda-handler1.py", encoding="utf8") as fp:
+        with open("files/lambdafiles/lambda-handler1.py", encoding="utf8") as fp:
             handler_code = fp.read()
 
         lambdaFunction = lambda_.Function(
@@ -128,7 +128,7 @@ class SecondStack(core.Stack):
             resources=["*"]
         ))
 
-        with open("files/lambda-handler2.py", encoding="utf8") as fp:
+        with open("files/lambdafiles/lambda-handler2.py", encoding="utf8") as fp:
             handler_code = fp.read()
 
         lambdaFunction = lambda_.Function(
@@ -184,7 +184,7 @@ class ThreeStack(core.Stack):
             resources=["*"]
         ))
 
-        with open("files/lambda-handler3.py", encoding="utf8") as fp:
+        with open("files/lambdafiles/lambda-handler3.py", encoding="utf8") as fp:
             handler_code = fp.read()
 
         lambdaFunction = lambda_.Function(
@@ -240,7 +240,7 @@ class FourStack(core.Stack):
             resources=["*"]
         ))
 
-        with open("files/lambda-handler4.py", encoding="utf8") as fp:
+        with open("files/lambdafiles/lambda-handler4.py", encoding="utf8") as fp:
             handler_code = fp.read()
 
         lambdaFunction = lambda_.Function(
