@@ -1,26 +1,31 @@
-cdk installtion
+| S3bucket | Lambda | DynamoDb |
+| --------------- | --------------- | --------------- |
+| 1. Create S3 bucket| 1. create iam role | 1. Create dynamodb |
+| 2. Upload the file into s3 bucket | 2. Lambdafunction Create |  |
+|  | 3. Create event trigger function in cloudwatch |  |
 
-    Requiremnets
-
-        ubuntu machine ( x64 )
-
-Packages:
+| Operating System |
+| --------------- |
+| ubuntu machine ( x64 ) |
         
-    sudo apt update
-    sudo apt install python3 python3-pip -y
-    
-Install cdk installtion:
-        
-    pip3 install aws-cdk.cdk 
-    pip3 install awscli
+| Dependencies Packages |
+| --------------- |
+| sudo apt update |
+| sudo apt install python3 python3-pip -y |
 
-verify cdk installtion:
 
-    cdk --version
+| cdk installtion |
+| --------------- |
+| pip3 install aws-cdk.cdk |
+| pip3 install awscli |
 
-configure aws credentials:
+| verify cdk installtion |
+| --------------- |
+| cdk --version |
 
-    aws configure
+| configure aws credentials |
+| --------------- |
+| aws configure |
 
 
 
