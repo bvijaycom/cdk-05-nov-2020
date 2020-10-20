@@ -20,7 +20,6 @@ class FirstStack(core.Stack):
         _bucket_folder_name = core.CfnParameter(self, "targetFoldername", type="String")
         first_lambda_name = core.CfnParameter(self, "FirstLambdaName", type="String")
         _dynamodb_name = core.CfnParameter(self, "DynamodbName", type="String")
-        ZipFIleNames = core.CfnParameter(self, "uploadFoldername", type="String")
 
         first_lambda_Role_name = first_lambda_name.value_as_string + 'Role'
         first_lambda_Rule_name = first_lambda_name.value_as_string + 'Rule'
@@ -41,7 +40,7 @@ class FirstStack(core.Stack):
                                            destination_bucket=bucket,
                                            destination_key_prefix=_bucket_folder_name.value_as_string,
                                            sources=[
-                                               s3upload.Source.asset(ZipFIleNames.value_as_string)]
+                                               s3upload.Source.asset('./files')]
                                            )
 
         iamRole = aws_iam.Role(self,
@@ -275,8 +274,8 @@ class FourStack(core.Stack):
 
 
 app = core.App()
-FirstStack(app, "FirstStack")
-SecondStack(app, "SecondStack")
-ThreeStack(app, "ThirdStack")
-FourStack(app, "FourthStack")
+FirstStack(app, "First-Stack")
+SecondStack(app, "Second-Stack")
+ThreeStack(app, "Third-Stack")
+FourStack(app, "Fourth-Stack")
 app.synth()

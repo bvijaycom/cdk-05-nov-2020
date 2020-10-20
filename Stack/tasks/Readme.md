@@ -29,8 +29,7 @@ First Stack deploy
     cdk deploy First-Stack --parameters uploadBucketName=jinojoes3bucket \
         --parameters DynamodbName=jinojoeDynamodb \
         --parameters targetFoldername='common' \
-        --parameters FirstLambdaName=firstlambda \
-        --parameters uploadZipfileName='files' 
+        --parameters FirstLambdaName=firstlambda 
 
 Second Stack Deploy
 
