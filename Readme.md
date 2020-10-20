@@ -7,17 +7,18 @@ cloud development kit
 | Dependencies Packages |
 | --------------- |
 | sudo apt update |
-| sudo apt install python3 python3-pip -y |
+| sudo apt install python3 -y |
+| sudo apt install python3-pip -y |
 
 
-| cdk installtion |
-| --------------- |
-| pip3 install aws-cdk.cdk |
+cdk installtion && verify
+
+| installtion | verify |
+| --------------- | --------------- |
+| pip3 install aws-cdk.cdk | cdk --version |
 | pip3 install awscli |
 
-| verify cdk installtion |
-| --------------- |
-| cdk --version |
+
 
 | configure aws credentials |
 | --------------- |
