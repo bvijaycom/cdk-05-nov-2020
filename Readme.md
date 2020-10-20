@@ -1,8 +1,4 @@
-| S3bucket | Lambda | DynamoDb |
-| --------------- | --------------- | --------------- |
-| 1. Create S3 bucket| 1. create iam role | 1. Create dynamodb |
-| 2. Upload the file into s3 bucket | 2. Lambdafunction Create |  |
-|  | 3. Create event trigger function in cloudwatch |  |
+# cdk
 
 | Operating System |
 | --------------- |
