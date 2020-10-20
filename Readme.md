@@ -13,11 +13,9 @@ cloud development kit
 
 cdk installtion && verify
 
-| installtion | verify |
-| --------------- | --------------- |
-| pip3 install aws-cdk.cdk | cdk --version |
-| pip3 install awscli |
-
+        curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+        sudo apt-get install -y nodejs
+        cdk --version
 
 
 | configure aws credentials |
