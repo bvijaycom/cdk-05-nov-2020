@@ -10,7 +10,7 @@ Stack Details:
 
 Deploy procedures
 
-    pip3 install -r requirments.txt
+    pip3 install -r requirements.txt 
     cdk bootstrap -b [unique s3backetname] 
     cdk list
     cdk synthesize First-Stack
