@@ -20,8 +20,6 @@ class FirstStack(core.Stack):
             self, "uploadBucketName", type="String")
         first_lambda_name = core.CfnParameter(
             self, "FirstLambdaName", type="String")
-        first_dynamodb_name = core.CfnParameter(
-            self, "FirstDynamodbName", type="String")
 
         first_lambda_Role_name = first_lambda_name.value_as_string + 'Role'
         first_lambda_Rule_name = first_lambda_name.value_as_string + 'Rule'
@@ -88,22 +86,10 @@ class FirstStack(core.Stack):
 
         rule.add_target(targets.LambdaFunction(lambdaFunction))
 
-        # create dynamo table
-        dynamo_table = aws_dynamodb.Table(
-            self, "onesix",
-            table_name=first_dynamodb_name.value_as_string,
-            partition_key=aws_dynamodb.Attribute(
-                name="id",
-                type=aws_dynamodb.AttributeType.STRING
-            )
-        )
-
         # OutPut Section
         core.CfnOutput(self, "bucket_name", value=bucket.bucket_name)
         core.CfnOutput(self, "_FirstLambdaName",
                        value=lambdaFunction.function_name)
-        core.CfnOutput(self, "_FirstdynamodbName",
-                       value=dynamo_table.table_name)
 
 
 class SecondStack(core.Stack):
@@ -112,8 +98,7 @@ class SecondStack(core.Stack):
 
         second_lambda_name = core.CfnParameter(
             self, "SecondLambdaName", type="String")
-        second_dynamodb_name = core.CfnParameter(
-            self, "SecondDynamodbName", type="String")
+
         second_lambda_Role_name = second_lambda_name.value_as_string + 'Role'
         second_lambda_Rule_name = second_lambda_name.value_as_string + 'Rule'
 
@@ -161,18 +146,8 @@ class SecondStack(core.Stack):
 
         rule.add_target(targets.LambdaFunction(lambdaFunction))
 
-        dynamo_table = aws_dynamodb.Table(
-            self, "twofour",
-            table_name=second_dynamodb_name.value_as_string,
-            partition_key=aws_dynamodb.Attribute(
-                name="id",
-                type=aws_dynamodb.AttributeType.STRING
-            )
-        )
         core.CfnOutput(self, "_SecondLambdaName",
                        value=lambdaFunction.function_name)
-        core.CfnOutput(self, "_SeconddynamodbName",
-                       value=dynamo_table.table_name)
 
 
 class ThreeStack(core.Stack):
@@ -181,8 +156,7 @@ class ThreeStack(core.Stack):
 
         third_lambda_name = core.CfnParameter(
             self, "ThirdLambdaName", type="String")
-        third_dynamodb_name = core.CfnParameter(
-            self, "ThirdDynamodbName", type="String")
+
         third_lambda_Role_name = third_lambda_name.value_as_string + 'Role'
         third_lambda_Rule_name = third_lambda_name.value_as_string + 'Rule'
 
@@ -227,20 +201,11 @@ class ThreeStack(core.Stack):
                 week_day='MON-FRI',
                 year='*'),
         )
-        dynamo_table = aws_dynamodb.Table(
-            self, "threefour",
-            table_name=third_dynamodb_name.value_as_string,
-            partition_key=aws_dynamodb.Attribute(
-                name="id",
-                type=aws_dynamodb.AttributeType.STRING
-            )
-        )
+
         rule.add_target(targets.LambdaFunction(lambdaFunction))
 
         core.CfnOutput(self, "_ThirdLambdaName",
                        value=lambdaFunction.function_name)
-        core.CfnOutput(self, "_ThirddynamodbName",
-                       value=dynamo_table.table_name)
 
 
 class FourStack(core.Stack):
@@ -249,8 +214,7 @@ class FourStack(core.Stack):
 
         fourth_lambda_name = core.CfnParameter(
             self, "FourthLambdaName", type="String")
-        fourth_dynamodb_name = core.CfnParameter(
-            self, "FourthDynamodbName", type="String")
+
         fourth_lambda_Role_name = fourth_lambda_name.value_as_string + 'Role'
         fourth_lambda_Rule_name = fourth_lambda_name.value_as_string + 'Rule'
 
@@ -298,7 +262,51 @@ class FourStack(core.Stack):
 
         rule.add_target(targets.LambdaFunction(lambdaFunction))
 
-        dynamo_table = aws_dynamodb.Table(
+        core.CfnOutput(self, "_FourthLambdaName",
+                       value=lambdaFunction.function_name)
+
+
+class FifthStack(core.Stack):
+    def __init__(self, app: core.App, id: str) -> None:
+        super().__init__(app, id)
+
+        first_dynamodb_name = core.CfnParameter(
+            self, "FirstDynamodbName", type="String")
+        second_dynamodb_name = core.CfnParameter(
+            self, "SecondDynamodbName", type="String")
+        third_dynamodb_name = core.CfnParameter(
+            self, "ThirdDynamodbName", type="String")
+        fourth_dynamodb_name = core.CfnParameter(
+            self, "FourthDynamodbName", type="String")
+
+        # create dynamo table
+        _first_dynamo_table = aws_dynamodb.Table(
+            self, "onesix",
+            table_name=first_dynamodb_name.value_as_string,
+            partition_key=aws_dynamodb.Attribute(
+                name="id",
+                type=aws_dynamodb.AttributeType.STRING
+            )
+        )
+
+        _second_dynamo_table = aws_dynamodb.Table(
+            self, "twofour",
+            table_name=second_dynamodb_name.value_as_string,
+            partition_key=aws_dynamodb.Attribute(
+                name="id",
+                type=aws_dynamodb.AttributeType.STRING
+            )
+        )
+
+        _third_dynamo_table = aws_dynamodb.Table(
+            self, "threefour",
+            table_name=third_dynamodb_name.value_as_string,
+            partition_key=aws_dynamodb.Attribute(
+                name="id",
+                type=aws_dynamodb.AttributeType.STRING
+            )
+        )
+        _fourth_dynamo_table = aws_dynamodb.Table(
             self, "fourfour",
             table_name=fourth_dynamodb_name.value_as_string,
             partition_key=aws_dynamodb.Attribute(
@@ -306,11 +314,14 @@ class FourStack(core.Stack):
                 type=aws_dynamodb.AttributeType.STRING
             )
         )
-
-        core.CfnOutput(self, "_FourthLambdaName",
-                       value=lambdaFunction.function_name)
+        core.CfnOutput(self, "_FirstdynamodbName",
+                       value=_first_dynamo_table.table_name)
+        core.CfnOutput(self, "_SeconddynamodbName",
+                       value=_second_dynamo_table.table_name)
+        core.CfnOutput(self, "_ThirddynamodbName",
+                       value=_third_dynamo_table.table_name)
         core.CfnOutput(self, "_FourthdynamodbName",
-                       value=dynamo_table.table_name)
+                       value=_fourth_dynamo_table.table_name)
 
 
 app = core.App()
