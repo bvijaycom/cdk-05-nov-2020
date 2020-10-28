@@ -20,21 +20,28 @@ Deploy procedures
 
 First Stack deploy
 
-    cdk deploy First-Stack --parameters uploadBucketName=jinojoes3bucket --parameters FirstLambdaName=firstlambda1 --parameters FirstDynamodbName=jinojoeDynamodb1 
+    cdk deploy First-Stack \
+    --parameters uploadBucketName=jinojoes3bucket \
+    --parameters FirstLambdaName=firstlambda1 \
+    --parameters FirstDynamodbName=jinojoeDynamodb1 
 
 Second Stack Deploy
 
-    cdk deploy Second-Stack --parameters SecondLambdaName=secondlambda2 --parameters SecondDynamodbName=jinojoeDynamodb2
+    cdk deploy Second-Stack \
+    --parameters SecondLambdaName=secondlambda2 \
+    --parameters SecondDynamodbName=jinojoeDynamodb2
 
 Third Stack Deploy
 
-    cdk deploy Third-Stack --parameters ThirdLambdaName=thirdlambda3 --parameters ThirdDynamodbName=jinojoeDynamodb3
+    cdk deploy Third-Stack \
+    --parameters ThirdLambdaName=thirdlambda3 \
+    --parameters ThirdDynamodbName=jinojoeDynamodb3
 
 Fourth Stack Deploy
 
-    cdk deploy Fourth-Stack --parameters FourthLambdaName=fourthlambda4 --parameters FourthDynamodbName=jinojoeDynamodb4
-
-
+    cdk deploy Fourth-Stack \
+    --parameters FourthLambdaName=fourthlambda4 \
+    --parameters FourthDynamodbName=jinojoeDynamodb4
 
 Destroy stacks
 
