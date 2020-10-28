@@ -282,7 +282,7 @@ class FifthStack(core.Stack):
         # create dynamo table
         _first_dynamo_table = aws_dynamodb.Table(
             self, "onesix",
-            removal_policy="RemovalPolicy.DESTROY",
+            removal_policy="DESTROY",
             table_name=first_dynamodb_name.value_as_string,
             partition_key=aws_dynamodb.Attribute(
                 name="id",
@@ -292,7 +292,7 @@ class FifthStack(core.Stack):
 
         _second_dynamo_table = aws_dynamodb.Table(
             self, "twofour",
-            removal_policy="RemovalPolicy.DESTROY",
+            removal_policy="DESTROY",
             table_name=second_dynamodb_name.value_as_string,
             partition_key=aws_dynamodb.Attribute(
                 name="id",
@@ -302,7 +302,7 @@ class FifthStack(core.Stack):
 
         _third_dynamo_table = aws_dynamodb.Table(
             self, "threefour",
-            removal_policy="RemovalPolicy.DESTROY",
+            removal_policy="DESTROY",
             table_name=third_dynamodb_name.value_as_string,
             partition_key=aws_dynamodb.Attribute(
                 name="id",
@@ -311,7 +311,7 @@ class FifthStack(core.Stack):
         )
         _fourth_dynamo_table = aws_dynamodb.Table(
             self, "fourfour",
-            removal_policy="RemovalPolicy.DESTROY",
+            removal_policy="DESTROY",
             table_name=fourth_dynamodb_name.value_as_string,
             partition_key=aws_dynamodb.Attribute(
                 name="id",
