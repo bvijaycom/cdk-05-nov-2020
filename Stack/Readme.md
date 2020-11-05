@@ -21,23 +21,23 @@ Deploy procedures
 First Stack deploy
 
     cdk deploy First-Stack \
-    --parameters uploadBucketName=jinojoes3bucket \
-    --parameters FirstLambdaName=lambda1 
+    --parameters uploadBucketName=sdg-d1 \
+    --parameters FirstLambdaName=data-validation 
 
 Second Stack Deploy
 
     cdk deploy Second-Stack \
-    --parameters SecondLambdaName=lambda2 
+    --parameters SecondLambdaName=json-flat 
 
 Third Stack Deploy
 
     cdk deploy Third-Stack \
-    --parameters ThirdLambdaName=lambda3 
+    --parameters ThirdLambdaName=data-enrichment 
 
 Fourth Stack Deploy
 
     cdk deploy Fourth-Stack \
-    --parameters FourthLambdaName=lambda4 
+    --parameters FourthLambdaName=store-db 
 
 FifthStack Deploy
 
